@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=jobboard
+POSTGRES_USER=rcdxRDBLByxqJmMBxznNUFEGTTYBQbeO
+POSTGRES_PASSWORD=Y6WOX1MjLNRzs6eIfDNeIi1z2E53l10PuEWMftncWuMduLtUrO8icHFmanRyGFll
