@@ -59,3 +59,15 @@ The following details how to deploy this application.
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
+
+
+### Job Board Planning
+
+- model representing the Job
+- view handles users submitting form and creating a job posting/listing
+- view displays all of the jobs that are available
+- updating a job so that its no longer available and doesnt show on search results / home page
+- 
+- users wont be able to "apply" for a position through the website but provide a contact form
+- special slot on the site for sponsored job postings
+- handle payments for sponsored job postings
