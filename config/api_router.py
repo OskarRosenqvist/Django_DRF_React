@@ -3,7 +3,13 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from jobboard.users.api.views import UserViewSet
-from jobboard.jobs.api.views import JobListView, JobCreateView, JobUpdateView
+from jobboard.jobs.api.views import (
+    JobListView,
+    JobDetailview,
+    JobCreateView,
+    JobUpdateView,
+    JobDeleteView
+)
 
 if settings.DEBUG:
     router = DefaultRouter()
@@ -17,8 +23,11 @@ app_name = "api"
 
 urlpatterns = [
     path("jobs/", JobListView.as_view()),
+    path("jobs/<pk>/", JobDetailview.as_view()),
+    path("jobs/<pk>/update/", JobUpdateView.as_view()),
+    path("jobs/<pk>/delete/", JobDeleteView.as_view()),
     path("create-job/", JobCreateView.as_view()),
-    path("jobs/<pk>/", JobUpdateView.as_view()),
+
 ]
 
 urlpatterns += router.urls
