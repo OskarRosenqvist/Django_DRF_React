@@ -3,36 +3,32 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 import { JobList } from "./components/JobList"
 import { JobDetail } from "./components/JobDetail" 
+import { JobCreate } from "./components/JobCreate"
+import { AuthContextProvider } from './contexts/AuthContext' 
+import { Login } from './components/Login' 
+import { NavBar } from "./components/NavBar";
 
 
 
 export default function App() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-
-        <Routes>
-          <Route path="/about" element={<About/>} />
-          <Route path="/users" element={<Users/>} />
-          <Route path="/jobs/:id" element={<JobDetail/>} />
-          <Route path="/" element={<JobList/>} exact />
-        </Routes>
-      </div>
+      <AuthContextProvider>
+        <div>
+          <NavBar />
+          <Routes>
+            <Route path="/about" element={<About/>} />
+            <Route path="/users" element={<Users/>} />
+            <Route path="/jobs/:id" element={<JobDetail/>} />
+            <Route path="/create-job" element={<JobCreate/>} exact />
+            <Route path="/login" element={<Login/>} exact />
+            <Route path="/" element={<JobList/>} exact />
+          </Routes>
+        </div>
+      </AuthContextProvider>
     </Router>
   );
 }

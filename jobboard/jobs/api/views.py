@@ -21,6 +21,7 @@ class JobListView(ListAPIView):
 
 class JobCreateView(CreateAPIView):
     serializer_class = JobSerializer
+    permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -36,12 +37,14 @@ class JobDetailview(RetrieveAPIView):
 
 class JobUpdateView(UpdateAPIView):
     serializer_class = JobSerializer
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         return Job.objects.filter(available=True)
 
 
 class JobDeleteView(DestroyAPIView):
+    permission_classes = (AllowAny,)
 
     def get_queryset(self):
         return Job.objects.all()
