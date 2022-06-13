@@ -187,3 +187,4 @@ sentry_sdk.init(
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+FRONTEND_URL = "https://jobs.example.com"

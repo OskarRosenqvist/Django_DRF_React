@@ -1,37 +1,59 @@
+import axios from "axios"
 import { useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { API } from "../api"
 import { AuthContext } from "../contexts/AuthContext"
 
 export function NavBar() {
-    const { user } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
+    const navigate = useNavigate()
+    
+    function handleSubmit() {
+        axios.post(API.auth.logout)
+        .then(res => {
+            logout()
+            navigate('/login')
+        })
+        
+    }
 
     return (
-        <nav>
-            <ul>
-                <li>
-                <Link to="/">Home</Link>
-                </li>
-                <li>
-                <Link to="/about">About</Link>
-                </li>
-                <li>
-                <Link to="/users">Users</Link>
-                </li>
-                <li>
-                <Link to="/create-job">Create Job</Link>
-                </li>
-                {user ? (
-                    <li>
-                    <Link to="/logout">Logout</Link>
-                    </li>
-                    ): 
-                    (
-                    <li>
-                        <Link to="/login">Login</Link>
-                    </li>
-                )}
-                
-            </ul>
+        
+        <nav className="max-w-4xl mx-auto py-5 px-4 border-b border-gray-200">
+                        <ul className="flex items-center justify-between">
+                            <div className="flex items-center">
+                                <li className="text-gray-600">
+                                <Link className="hover:text-blue-600" to="/">Home</Link>
+                                </li>
+                                <li className="ml-3 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/about">About</Link>
+                                </li>
+                                <li className="ml-3 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/users">Users</Link>
+                                </li>
+                                <li className="ml-3 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/create-job">Create Job</Link>
+                                </li>
+                            </div>
+                            <div className="flex items-center">
+                                {user ? (
+                                    <li className="px-3 text-gray-600">
+                                    <button className="hover:text-blue-600" onClick={(handleSubmit)}>Logout</button>
+                                    </li>
+                                    ): 
+                                    (
+                                    <div className="flex items-center">
+                                        <li className="px-3 text-gray-600">
+                                            <Link className="hover:text-blue-600" to="/signup">Signup</Link>
+                                        </li>
+                                        <li className="px-3 text-gray-600">
+                                            <Link className="hover:text-blue-600" to="/login">Login</Link>
+                                        </li>
+                                    </div>
+                                )}
+                            </div>
+                            
+                        </ul>
         </nav>
     )
 }
