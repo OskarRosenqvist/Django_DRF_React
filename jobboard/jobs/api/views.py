@@ -1,3 +1,4 @@
+from django.conf import settings
 from jobboard.jobs.models import Job
 from jobboard.jobs.api.serializers import JobSerializer
 from rest_framework.generics import (
@@ -8,7 +9,9 @@ from rest_framework.generics import (
     DestroyAPIView,
 )
 from rest_framework.permissions import AllowAny, IsAuthenticated
+import stripe
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class JobListView(ListAPIView):
     # queryset = Job.objects.all()
