@@ -8,7 +8,8 @@ from jobboard.jobs.api.views import (
     JobDetailview,
     JobCreateView,
     JobUpdateView,
-    JobDeleteView
+    JobDeleteView,
+    CreatePaymentView,
 )
 
 if settings.DEBUG:
@@ -27,6 +28,7 @@ urlpatterns = [
     path("jobs/<pk>/update/", JobUpdateView.as_view()),
     path("jobs/<pk>/delete/", JobDeleteView.as_view()),
     path("create-job/", JobCreateView.as_view()),
+    path("payments/create-payment/", CreatePaymentView.as_view()),
 
 ]
 

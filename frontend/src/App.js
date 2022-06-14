@@ -14,10 +14,9 @@ import { JobUpdate } from "./components/JobUpdate";
 import { JobDelete } from "./components/JobDelete";
 import { Signup } from "./components/Signup";
 import { ConfirmEmail } from "./components/ConfirmEmail";
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+import { Payment } from "./components/Payment";
 
-const stripePromise = loadStripe('pk_test_51KveESHPYsyPqSfN6nrF7JBG0mtZUUqBfS7rl3cTHdbycKU0WCScDvETmANX1vbZnjilmycDLz3UzDG0pG1KckUg00K3gsFSy5');
+
 
 function PrivateRoute({children}) {
   const { user } = useContext(AuthContext)
@@ -25,22 +24,17 @@ function PrivateRoute({children}) {
   return user ? children : <Login/>
 }
 
-
 export default function App() {
 
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret: '{{CLIENT_SECRET}}',
-  };
 
   return (
     <Router>
       <AuthContextProvider>
-      <Elements stripe={stripePromise} options={options}>
         <div>
           <NavBar />
           <div className="max-w-4xl mx-auto py-5 px-4 border-b border-gray-200">
           <Routes>
+            <Route path="/payment" element={<Payment/>} />
             <Route path="/about" element={<About/>} />
             <Route path="/users" element={<Users/>} />
             <Route path="/jobs/:id" element={<JobDetail/>} />
@@ -54,7 +48,6 @@ export default function App() {
           </Routes>
           </div>
         </div>
-      </Elements>
       </AuthContextProvider>
     </Router>
   );

@@ -34,6 +34,9 @@ export function NavBar() {
                                 <li className="ml-3 text-gray-600">
                                 <Link className="hover:text-blue-600" to="/create-job">Create Job</Link>
                                 </li>
+                                <li className="ml-3 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/payment">Payment</Link>
+                                </li>
                             </div>
                             <div className="flex items-center">
                                 {user ? (

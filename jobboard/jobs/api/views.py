@@ -1,4 +1,6 @@
 from django.conf import settings
+from rest_framework.response import Response
+
 from jobboard.jobs.models import Job
 from jobboard.jobs.api.serializers import JobSerializer
 from rest_framework.generics import (
@@ -8,10 +10,12 @@ from rest_framework.generics import (
     UpdateAPIView,
     DestroyAPIView,
 )
+from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 class JobListView(ListAPIView):
     # queryset = Job.objects.all()
@@ -51,3 +55,22 @@ class JobDeleteView(DestroyAPIView):
 
     def get_queryset(self):
         return Job.objects.all()
+
+
+class CreatePaymentView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        try:
+            # Create a PaymentIntent with the order amount and currency
+            intent = stripe.PaymentIntent.create(
+                amount=1000,  # 10
+                currency='usd',
+                automatic_payment_methods={
+                    'enabled': True,
+                },
+            )
+            return Response({
+                'clientSecret': intent['client_secret']
+            })
+        except Exception as e:
+            return Response({"error": str(e)}, status=403)
