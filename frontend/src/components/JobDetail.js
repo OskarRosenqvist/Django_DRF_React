@@ -51,6 +51,12 @@ export function JobDetail() {
                     <NavLink className="ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-red-500" to={`/jobs/${id}/delete`}>
                         Delete
                     </NavLink>
+                    {!job.sponsored && (
+                        <NavLink className="ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-yellow-500" to={`/jobs/${id}/sponsor`}>
+                            Sponsor
+                        </NavLink>
+                    )}
+                    
                     </div>
                 </div>
                 

@@ -6,6 +6,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
+from jobboard.jobs.api.views import stripe_webhook
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -17,6 +18,7 @@ urlpatterns = [
     # User management
     path("users/", include("jobboard.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("webhooks/stripe/", stripe_webhook),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

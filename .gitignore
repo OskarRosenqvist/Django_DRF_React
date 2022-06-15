@@ -334,6 +334,9 @@ jobboard/media/
 /.envs/.local/.postgres
 #.envs/.production/
 
+# ngrok
+ngrok
+
 # Frontend
 
 # dependencies

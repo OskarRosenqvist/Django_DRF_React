@@ -15,6 +15,7 @@ import { JobDelete } from "./components/JobDelete";
 import { Signup } from "./components/Signup";
 import { ConfirmEmail } from "./components/ConfirmEmail";
 import { Payment } from "./components/Payment";
+import { Success } from "./components/Success";
 
 
 
@@ -34,10 +35,10 @@ export default function App() {
           <NavBar />
           <div className="max-w-4xl mx-auto py-5 px-4 border-b border-gray-200">
           <Routes>
-            <Route path="/payment" element={<Payment/>} />
             <Route path="/about" element={<About/>} />
-            <Route path="/users" element={<Users/>} />
+            <Route path="/sponsor/success" element={<Success/>} />
             <Route path="/jobs/:id" element={<JobDetail/>} />
+            <Route path="/jobs/:id/sponsor" element={<Payment/>} />
             <Route path="/jobs/:id/update" element={<PrivateRoute><JobUpdate/></PrivateRoute>} exact />
             <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete/></PrivateRoute>} exact />
             <Route path="/create-job" element={<PrivateRoute><JobCreate/></PrivateRoute>} exact />
@@ -57,6 +58,3 @@ function About() {
   return <h2>About</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
-}

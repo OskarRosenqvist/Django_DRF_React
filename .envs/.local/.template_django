@@ -7,3 +7,4 @@ IPYTHONDIR=/app/.ipython
 # ------------------------------------------------------------------------------
 STRIPE_SECRET_KEY=
 STRIPE_PUBLIC_KEY=
+STRIPE_WEBHOOK_SECRET=

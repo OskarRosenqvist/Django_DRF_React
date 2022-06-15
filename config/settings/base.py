@@ -312,3 +312,4 @@ SPECTACULAR_SETTINGS = {
 # ------------------------------------------------------------------------------
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
 STRIPE_PUBLIC_KEY = env("STRIPE_PUBLIC_KEY")
+STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET")
