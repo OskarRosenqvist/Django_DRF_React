@@ -1,22 +1,27 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { NavLink, useParams } from "react-router-dom"
 import { API } from "../api"
+import { AuthContext } from "../contexts/AuthContext"
 
 export function JobDetail() {
     const [job, setJob] = useState(null)
     const { id } = useParams()
+    const { user: { token } } = useContext(AuthContext)
+
     useEffect(() => {
         function fetchJob() {
-            axios.get(API.jobs.retrieve(id))
+            axios.get(API.jobs.retrieve(id), {headers: {
+                "Authorization": `Token ${token}`
+            }})
             .then(res => {
-                console.log(res.data)
                 setJob(res.data)
+
             })
         }
         fetchJob()
 
-    }, [id])
+    }, [id, token])
 
     return (
         <div>
@@ -30,8 +35,13 @@ export function JobDetail() {
                     </NavLink>
                     <div className="mt-1 italic text-sm text-gray-500">{new Date(job.date_created).toUTCString()}</div>
                     </div>
+                    {job.company_logo && (
+                    <div className="mt-1 italic text-sm text-gray-500">
+                    <img src={job.company_logo} className="h-20 w-20 px-2 py-2"/>
+                    </div>
+                    )}
                     
-                    <p className="mt-1 text-xl text-gray-500">${job.salary}</p>
+                    <p className="mt-1 text-xl text-gray-500">Salary: ${job.salary}</p>
                     <p className="mt-1 text-gray-500">{job.company_name}</p>
                     <p className="mt-1 italic text-sm text-gray-500">
                         Company Website: 
@@ -44,6 +54,7 @@ export function JobDetail() {
                     
                     
                     </div>
+                    {job.is_owner && (
                     <div className="mt-5 flex items-center">
                     <NavLink className="bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-blue-500" to={`/jobs/${id}/update`}>
                         Update
@@ -51,6 +62,7 @@ export function JobDetail() {
                     <NavLink className="ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-red-500" to={`/jobs/${id}/delete`}>
                         Delete
                     </NavLink>
+                    
                     {!job.sponsored && (
                         <NavLink className="ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-yellow-500" to={`/jobs/${id}/sponsor`}>
                             Sponsor
@@ -58,6 +70,7 @@ export function JobDetail() {
                     )}
                     
                     </div>
+                    )}
                 </div>
                 
             )}

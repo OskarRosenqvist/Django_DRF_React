@@ -9,6 +9,7 @@ from django.http import HttpResponse
 # ----------------------
 from jobboard.jobs.models import Job, SponsoredJobPost
 from jobboard.jobs.api.serializers import JobSerializer
+from jobboard.jobs.api.permissions import IsJobOwner
 from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
@@ -29,7 +30,7 @@ class JobListView(ListAPIView):
     permission_classes = (AllowAny, )
 
     def get_queryset(self):
-        return Job.objects.filter(available=True)
+        return Job.objects.filter(available=True).order_by("-date_created")
 
 
 class JobCreateView(CreateAPIView):
@@ -50,20 +51,30 @@ class JobDetailview(RetrieveAPIView):
 
 class JobUpdateView(UpdateAPIView):
     serializer_class = JobSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated, IsJobOwner)
 
     def get_queryset(self):
         return Job.objects.filter(available=True)
 
 
 class JobDeleteView(DestroyAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated, IsJobOwner)
 
     def get_queryset(self):
         return Job.objects.all()
 
 
+class SponsoredJobCountView(APIView):
+    serializer_class = JobSerializer
+    permission_classes = (AllowAny, )
+
+    def get(self, request, *args, **kwargs):
+        job_count = Job.objects.filter(available=True, sponsored=True).count()
+        return Response({"job_count": job_count})
+
+
 class CreatePaymentView(APIView):
+    permission_classes = (IsAuthenticated, IsJobOwner)
 
     def post(self, request, *args, **kwargs):
         try:

@@ -1,16 +1,28 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import { API } from "../api"
+import { AuthContext } from "../contexts/AuthContext"
 
 function JobListItem({job}) {
   return (
-    <div className="border border-gray-200 px-3 py-3 shadow-sm rounded-sm">
+    <div className="mt-5 border border-gray-200 px-3 py-3 shadow-sm rounded-sm">
       <div className="flex items-center justify-between">
       <NavLink to={`/jobs/${job.id}`}>
-      <h3 className="text-2xl text-gray-800 font-semibold">{job.title}</h3>
+      <h3 className="text-2xl text-gray-800 font-semibold">
+        {job.title}
+        {job.sponsored && (
+          <span className="ml-2 px-2 py-2 text-sm bg-yellow-200 text-red-800 shadow-xl rounded-xl">Sponsored</span>
+        )}
+        </h3>
       </NavLink>
       <div className="mt-1 italic text-sm text-gray-500">{new Date(job.date_created).toUTCString()}</div>
+      {job.company_logo && (
+        <div className="mt-1 italic text-sm text-gray-500">
+          <img src={job.company_logo} className="h-20 w-20 px-2 py-2"/>
+        </div>
+      )}
+      
       </div>
       
       <p className="mt-1 text-xl text-gray-500">${job.salary}</p>
@@ -31,22 +43,35 @@ function JobListItem({job}) {
 
 export function JobList() {
     const [jobs, setJobs] = useState(null)
+    const [sponsoredJobs, setSponsoredJobs] = useState(null)
+    const { user: { token } } = useContext(AuthContext)
+ 
     useEffect (() => {
       function fetchJobs() {
-        axios.get(API.jobs.list)
+        axios.get(API.jobs.list, {headers: {
+          "Authorization": `Token ${token}`
+      }})
         .then(res => {
-          console.log(res.data)
-          setJobs(res.data)
+          const sponsoredJobs = res.data.filter(job => job.sponsored)
+          const restOfJobs = res.data.filter(job => !job.sponsored)
+          setSponsoredJobs(sponsoredJobs)
+          setJobs(restOfJobs)
         })
       }
       fetchJobs()
-    }, [])
+      return () => null
+    }, [token])
   
     
   
     return (
       <div>
         {!jobs && "Loading..."}
+        {sponsoredJobs && sponsoredJobs.map(job =>{
+          return ( 
+            <JobListItem key={job.id} job={job} />
+          )
+        })}
         {jobs && jobs.map(job =>{
           return ( 
             <JobListItem key={job.id} job={job} />

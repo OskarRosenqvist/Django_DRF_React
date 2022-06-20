@@ -17,9 +17,20 @@ export function JobUpdate() {
     const { user: { token } } = useContext(AuthContext)
     
     useEffect(() => {
+        {job && !job.is_owner && (
+            navigate('/')
+        )}
+        return () => null
+    })
+
+    useEffect(() => {
         setLoadingJob(true)
         function fetchJob() {
-            axios.get(API.jobs.retrieve(id))
+            axios.get(API.jobs.retrieve(id), {
+                headers: {
+                    "Authorization": `Token ${token}`
+                }
+            })
                 .then(res => {
                     setJob(res.data)
                 })
@@ -29,7 +40,7 @@ export function JobUpdate() {
         }
         fetchJob()
         return () => null
-    }, [id])
+    }, [id, token])
 
     function handleSubmit(values) {
         setLoading(true)
@@ -57,7 +68,9 @@ export function JobUpdate() {
                         company_name: job.company_name,
                         company_website: job.company_website,
                         location: job.location,
-                        salary: job.salary
+                        salary: job.salary,
+                        available: true,
+                        remote: false,
                     }}
                     onSubmit={handleSubmit}>
 
@@ -193,6 +206,59 @@ export function JobUpdate() {
                                             ) : null
                                         }
                                         />
+                                    </label>
+                                )}
+                            </Field>
+
+                            <Field name="available">
+                                {({ field, form }) => (
+                                    <div className="block">
+                                    <label className="mt-3 block">
+                                        
+                                        <input
+                                        {...field}
+                                        type="checkbox"
+                                        className="
+                                        rounded
+                                        bg-blue-200
+                                        border-transparent
+                                        focus:border-transparent focus:bg-blue-200
+                                        text-blue-700
+                                        focus:ring-1 focus:ring-offset-2 focus:ring-blue-500
+                                        "
+                                        style={
+                                            form.touched.available && form.errors.available ? (
+                                                { border: '2px solid var(--primary-red)'}
+                                            ) : null
+                                        }
+                                        />
+                                        <span className="text-gray-700">Available</span>
+                                    </label>
+                                    </div>
+                                )}
+                            </Field>
+                            <Field name="remote">
+                                {({ field, form }) => (
+                                    <label className="mt-3 block">
+                                        
+                                        <input
+                                        {...field}
+                                        type="checkbox"
+                                        className="
+                                            rounded
+                                            bg-blue-200
+                                            border-transparent
+                                            focus:border-transparent focus:bg-blue-200
+                                            text-blue-700
+                                            focus:ring-1 focus:ring-offset-2 focus:ring-blue-500
+                                        "
+                                        style={
+                                            form.touched.remote && form.errors.remote ? (
+                                                { border: '2px solid var(--primary-red)'}
+                                            ) : null
+                                        }
+                                        />
+                                        <span className="text-gray-700">Remote</span>
                                     </label>
                                 )}
                             </Field>

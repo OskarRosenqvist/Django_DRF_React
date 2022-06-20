@@ -14,9 +14,18 @@ export function JobDelete() {
     const { id } = useParams()
 
     useEffect(() => {
+        {job && !job.is_owner && (
+            navigate('/')
+        )}
+        return () => null
+    })
+
+    useEffect(() => {
         setLoadingJob(true)
         function fetchJob() {
-            axios.get(API.jobs.retrieve(id))
+            axios.get(API.jobs.retrieve(id), {headers: {
+                "Authorization": `Token ${token}`
+            }})
             .then(res => {
                 setJob(res.data)
             })
@@ -27,7 +36,7 @@ export function JobDelete() {
         fetchJob()
         return () => null
 
-    }, [id])
+    }, [id, token])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -52,7 +61,10 @@ export function JobDelete() {
             {loadingJob && "Fetching Job details..."}
             {job && (
                 <form onSubmit={handleSubmit}>
-                    <button className="ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-red-500" type="submit">Delete</button>
+                    <p>
+                        Do you really want to delete the job post?
+                    </p>
+                    <button className="mt-2 ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-red-500" type="submit">Delete</button>
                 </form>
             )}
         </div>

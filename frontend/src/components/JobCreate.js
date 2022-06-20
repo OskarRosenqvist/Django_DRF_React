@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import axios from "axios"
 import { API } from '../api'
@@ -6,13 +6,43 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export function JobCreate() {
+    const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(false)
     const { user: { token } } = useContext(AuthContext)
     const navigate = useNavigate()
     
+    function ImagePreview ({file}) {
+        const [imageSrc, setImageSRC] = useState(null)
+
+        useEffect(() => {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                setImageSRC(reader.result)
+            }
+            reader.readAsDataURL(file)
+        })
+
+        return (
+            <div>
+                {!imageSrc && "Loading..."}
+                {imageSrc && (
+                    <img src={imageSrc} className="h-20 w-20 px-2 py-2" alt={file.name}/>
+                )}
+                
+            </div>
+        )
+    }
+
     function handleSubmit(values) {
         setLoading(true)
-        axios.post(API.jobs.create, values, {
+        const data = new FormData()
+        data.append('title', values.title)
+        data.append('company_name', values.company_name)
+        data.append('company_logo', file)
+        data.append('company_website', values.company_website)
+        data.append('location', values.location)
+        data.append('salary', values.salary)
+        axios.post(API.jobs.create, data, {
             headers: {
                 "Authorization": `Token ${token}`
             }
@@ -33,6 +63,7 @@ export function JobCreate() {
                 initialValues={{
                     title: 'Software developer',
                     company_name: 'Facebook',
+                    company_logo: '',
                     company_website: 'https://facebook.com',
                     location:'California',
                     salary: 100000
@@ -94,6 +125,29 @@ export function JobCreate() {
                                 </label>
                             )}
                         </Field>
+
+                        
+                        <div className="flex items-center">
+                            <label className="mt-3 block">
+                                <span className="text-gray-700">Company Logo</span>
+                                <input
+                                onChange={e => setFile(e.target.files[0])}
+                                type="file"
+                                className="
+                                    mt-1
+                                    block
+                                    w-full
+                                    rounded-md
+                                    border-gray-300
+                                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                                "
+                                />
+                                {file && (
+                                    <ImagePreview file={file}/>
+                                )}
+                            </label>
+                        </div>
+                        
 
                         <Field name="company_website">
                             {({ field, form }) => (

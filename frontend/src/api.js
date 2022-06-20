@@ -16,6 +16,7 @@ export const API = {
         retrieve: id => `${apiURL}jobs/${id}/`,
         update: id => `${apiURL}jobs/${id}/update/`,
         delete: id => `${apiURL}jobs/${id}/delete/`,
+        sponsored_count: `${apiURL}sponsored-count/`,
     },
     payment: {
         createPayment: `${apiURL}payments/create-payment/`,

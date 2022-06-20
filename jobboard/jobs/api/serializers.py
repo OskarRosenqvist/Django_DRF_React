@@ -3,6 +3,8 @@ from rest_framework import serializers
 
 
 class JobSerializer(serializers.ModelSerializer):
+    is_owner = serializers.SerializerMethodField()
+
     class Meta:
         model = Job
         fields = (
@@ -18,6 +20,7 @@ class JobSerializer(serializers.ModelSerializer):
             'user',
             'available',
             'sponsored',
+            'is_owner',
 
         )
         read_only_fields = (
@@ -25,3 +28,7 @@ class JobSerializer(serializers.ModelSerializer):
             'date_created',
             'user',
         )
+
+    def get_is_owner(self, obj):
+        user = self.context["request"].user
+        return obj.user == user
