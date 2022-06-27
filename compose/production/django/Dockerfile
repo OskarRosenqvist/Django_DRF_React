@@ -78,4 +78,7 @@ RUN chown django:django ${APP_HOME}
 
 USER django
 
-ENTRYPOINT ["/entrypoint"]
+COPY . ${APP_HOME}
+EXPOSE 80
+
+CMD ["sh", "./compose/production/django/runserver.sh"]
