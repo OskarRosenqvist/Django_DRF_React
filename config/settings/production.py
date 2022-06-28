@@ -191,5 +191,5 @@ FRONTEND_URL = "https://www.oskar-rosenqvist.com"
 CORS_ALLOWED_ORIGINS = [
     "https://www.oskar-rosenqvist.com",
     "https://oskar-rosenqvist.com",
-    "https://main--stalwart-babka-bc398f.netlify.app",
+    "https://main--stalwart-babka-bc398f.netlify.app"
 ]
