@@ -10,7 +10,11 @@ export function JobDelete() {
     const [loading, setLoading] = useState(false)
     const [loadingJob, setLoadingJob] = useState(false)
     const [job, setJob] = useState(null)
-    const { user: { token } } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    let token = ""
+    if (user) {
+      token = user.token
+    }
     const { id } = useParams()
 
     // useEffect(() => {

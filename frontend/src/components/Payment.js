@@ -7,11 +7,15 @@ import { AuthContext } from "../contexts/AuthContext";
 import { CheckoutForm } from "./CheckoutForm";
 import { useParams } from "react-router-dom";
 
-const stripePromise = loadStripe('pk_test_51KveESHPYsyPqSfN6nrF7JBG0mtZUUqBfS7rl3cTHdbycKU0WCScDvETmANX1vbZnjilmycDLz3UzDG0pG1KckUg00K3gsFSy5');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 export function Payment() {
     // const navigate = useNavigate()
-    const { user: { token } } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    let token = ""
+    if (user) {
+      token = user.token
+    }
     const { id } = useParams()
     const [clientSecret, setClientSecret] = useState("");
     const [canSponsor, setCanSponsor] = useState(true)

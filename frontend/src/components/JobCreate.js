@@ -8,7 +8,11 @@ import { useNavigate } from "react-router-dom";
 export function JobCreate() {
     const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(false)
-    const { user: { token } } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    let token = ""
+    if (user) {
+      token = user.token
+    }
     const navigate = useNavigate()
     
     function ImagePreview ({file}) {
