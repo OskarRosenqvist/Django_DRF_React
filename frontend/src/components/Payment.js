@@ -18,12 +18,12 @@ export function Payment() {
     const [job, setJob] = useState(null)
     const [loadingJob, setLoadingJob] = useState(false)
     
-    useEffect(() => {
-        {job && !job.is_owner && (
-            navigate('/')
-        )}
-        return () => null
-    })
+    // useEffect(() => {
+    //     {job && !job.is_owner && (
+    //         navigate('/')
+    //     )}
+    //     return () => null
+    // })
 
     useEffect(() => {
         setLoadingJob(true)

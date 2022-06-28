@@ -13,12 +13,12 @@ export function JobDelete() {
     const { user: { token } } = useContext(AuthContext)
     const { id } = useParams()
 
-    useEffect(() => {
-        {job && !job.is_owner && (
-            navigate('/')
-        )}
-        return () => null
-    })
+    // useEffect(() => {
+    //     {job && !job.is_owner && (
+    //         navigate('/')
+    //     )}
+    //     return () => null
+    // })
 
     useEffect(() => {
         setLoadingJob(true)

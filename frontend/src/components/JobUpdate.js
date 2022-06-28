@@ -16,12 +16,12 @@ export function JobUpdate() {
 
     const { user: { token } } = useContext(AuthContext)
     
-    useEffect(() => {
-        {job && !job.is_owner && (
-            navigate('/')
-        )}
-        return () => null
-    })
+    // useEffect(() => {
+    //     {job && !job.is_owner && (
+    //         navigate('/')
+    //     )}
+    //     return () => null
+    // })
 
     useEffect(() => {
         setLoadingJob(true)
