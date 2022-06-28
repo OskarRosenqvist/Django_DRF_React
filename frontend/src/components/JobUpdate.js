@@ -15,7 +15,7 @@ export function JobUpdate() {
     const { id } = useParams()
 
     const { user } = useContext(AuthContext)
-    let token = ""
+    let token = null
     if (user) {
       token = user.token
     }
@@ -30,17 +30,20 @@ export function JobUpdate() {
     useEffect(() => {
         setLoadingJob(true)
         function fetchJob() {
-            axios.get(API.jobs.retrieve(id), {
-                headers: {
-                    "Authorization": `Token ${token}`
-                }
-            })
-                .then(res => {
-                    setJob(res.data)
+            if (token) {
+                axios.get(API.jobs.retrieve(id), {
+                    headers: {
+                        "Authorization": `Token ${token}`
+                    }
                 })
-                .finally(() => {
-                    setLoadingJob(false)
-                })
+                    .then(res => {
+                        setJob(res.data)
+                    })
+                    .finally(() => {
+                        setLoadingJob(false)
+                    })
+            }
+            
         }
         fetchJob()
         return () => null

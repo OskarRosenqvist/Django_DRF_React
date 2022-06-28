@@ -11,7 +11,7 @@ export function JobDelete() {
     const [loadingJob, setLoadingJob] = useState(false)
     const [job, setJob] = useState(null)
     const { user } = useContext(AuthContext)
-    let token = ""
+    let token = null
     if (user) {
       token = user.token
     }
@@ -27,15 +27,18 @@ export function JobDelete() {
     useEffect(() => {
         setLoadingJob(true)
         function fetchJob() {
-            axios.get(API.jobs.retrieve(id), {headers: {
-                "Authorization": `Token ${token}`
-            }})
-            .then(res => {
-                setJob(res.data)
-            })
-            .finally(() => {
-                setLoadingJob(false)
-            })
+            if (token) {
+                axios.get(API.jobs.retrieve(id), {headers: {
+                    "Authorization": `Token ${token}`
+                }})
+                .then(res => {
+                    setJob(res.data)
+                })
+                .finally(() => {
+                    setLoadingJob(false)
+                })
+            }
+            
         }
         fetchJob()
         return () => null

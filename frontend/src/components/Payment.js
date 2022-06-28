@@ -12,7 +12,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 export function Payment() {
     // const navigate = useNavigate()
     const { user } = useContext(AuthContext)
-    let token = ""
+    let token = null
     if (user) {
       token = user.token
     }
@@ -50,31 +50,37 @@ export function Payment() {
     useEffect(() => {
         async function CreatePayment() {
             // Create PaymentIntent as soon as the page loads
-            try {
-                const res = await axios.post(API.payment.createPayment, {job_id: id}, {
-                    headers: {
-                        "Authorization": `Token ${token}`
-                    }
-                })
-                setClientSecret(res.data.clientSecret)
-            } catch (e) {
-                console.log(e)
+            if (token) {
+                try {
+                    const res = await axios.post(API.payment.createPayment, {job_id: id}, {
+                        headers: {
+                            "Authorization": `Token ${token}`
+                        }
+                    })
+                    setClientSecret(res.data.clientSecret)
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            
         }
 
         async function FetchSponsoredJobCount() {
-            try {
-                const res = await axios.get(API.jobs.sponsored_count, {
-                    headers: {
-                        "Authorization": `Token ${token}`
-                    }
-                })
-                
-                setCanSponsor(res.data.job_count <3)
-                
-            } catch (e) {
-                console.log(e)
+            if (token) {
+                try {
+                    const res = await axios.get(API.jobs.sponsored_count, {
+                        headers: {
+                            "Authorization": `Token ${token}`
+                        }
+                    })
+                    
+                    setCanSponsor(res.data.job_count <3)
+                    
+                } catch (e) {
+                    console.log(e)
+                }
             }
+            
         }
         FetchSponsoredJobCount()
         CreatePayment()

@@ -9,7 +9,7 @@ export function JobCreate() {
     const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(false)
     const { user } = useContext(AuthContext)
-    let token = ""
+    let token = null
     if (user) {
       token = user.token
     }
@@ -46,18 +46,21 @@ export function JobCreate() {
         data.append('company_website', values.company_website)
         data.append('location', values.location)
         data.append('salary', values.salary)
-        axios.post(API.jobs.create, data, {
-            headers: {
-                "Authorization": `Token ${token}`
-            }
-        })
-            .then(res => {
-                // console.log(res.data)
-                navigate("/")
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        if (token) {
+            axios.post(API.jobs.create, data, {
+                    headers: {
+                        "Authorization": `Token ${token}`
+                    }
+                })
+                    .then(res => {
+                        // console.log(res.data)
+                        navigate("/")
+                    })
+                    .finally(() => {
+                        setLoading(false)
+                    })
+        }
+        
     }
 
     return (
