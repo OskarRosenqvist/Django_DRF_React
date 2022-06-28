@@ -10,12 +10,12 @@ import { useNavigate, useParams } from "react-router-dom";
 const stripePromise = loadStripe('pk_test_51KveESHPYsyPqSfN6nrF7JBG0mtZUUqBfS7rl3cTHdbycKU0WCScDvETmANX1vbZnjilmycDLz3UzDG0pG1KckUg00K3gsFSy5');
 
 export function Payment() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { user: { token } } = useContext(AuthContext)
     const { id } = useParams()
     const [clientSecret, setClientSecret] = useState("");
     const [canSponsor, setCanSponsor] = useState(true)
-    const [job, setJob] = useState(null)
+    // const [job, setJob] = useState(null)
     const [loadingJob, setLoadingJob] = useState(false)
     
     // useEffect(() => {
@@ -25,23 +25,23 @@ export function Payment() {
     //     return () => null
     // })
 
-    useEffect(() => {
-        setLoadingJob(true)
-        function fetchJob() {
-            axios.get(API.jobs.retrieve(id), {headers: {
-                "Authorization": `Token ${token}`
-            }})
-            .then(res => {
-                setJob(res.data)
-            })
-            .finally(() => {
-                setLoadingJob(false)
-            })
-        }
-        fetchJob()
-        return () => null
+    // useEffect(() => {
+    //     setLoadingJob(true)
+    //     function fetchJob() {
+    //         axios.get(API.jobs.retrieve(id), {headers: {
+    //             "Authorization": `Token ${token}`
+    //         }})
+    //         .then(res => {
+    //             setJob(res.data)
+    //         })
+    //         .finally(() => {
+    //             setLoadingJob(false)
+    //         })
+    //     }
+    //     fetchJob()
+    //     return () => null
 
-    }, [id, token])
+    // }, [id, token])
 
     useEffect(() => {
         async function CreatePayment() {
@@ -87,7 +87,7 @@ export function Payment() {
 
     return (
         <div>
-            {loadingJob && "Fetching payment details..."}
+            {/* {loadingJob && "Fetching payment details..."} */}
             {!canSponsor && (
                 <div>
                     <p className="text-gray-600 italic">
