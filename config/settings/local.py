@@ -56,3 +56,10 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
+# CORS_URLS_REGEX = r"^/api/.*$"
+CORS_ALLOWED_ORIGINS = [
+    # "https://example.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]

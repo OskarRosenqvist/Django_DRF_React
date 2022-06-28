@@ -229,7 +229,7 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Oskar Rosenqvist""", "oskar-rosenqvist@example.com")]
+ADMINS = [("""Oskar Rosenqvist""", "oskar_rosenqvist@hotmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -289,13 +289,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-# django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
-# CORS_URLS_REGEX = r"^/api/.*$"
-CORS_ALLOWED_ORIGINS = [
-    # "https://example.com",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 # See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
@@ -305,7 +299,7 @@ SPECTACULAR_SETTINGS = {
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
     "SERVERS": [
         {"url": "http://127.0.0.1:8000", "description": "Local Development server"},
-        {"url": "https://example.com", "description": "Production server"},
+        {"url": "https://www.oskar-rosenqvist.com", "description": "Production server"},
     ],
 }
 # Your stuff...
