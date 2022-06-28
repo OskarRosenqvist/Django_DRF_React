@@ -5,7 +5,7 @@ import { API } from "../api";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import { CheckoutForm } from "./CheckoutForm";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const stripePromise = loadStripe('pk_test_51KveESHPYsyPqSfN6nrF7JBG0mtZUUqBfS7rl3cTHdbycKU0WCScDvETmANX1vbZnjilmycDLz3UzDG0pG1KckUg00K3gsFSy5');
 
@@ -16,7 +16,7 @@ export function Payment() {
     const [clientSecret, setClientSecret] = useState("");
     const [canSponsor, setCanSponsor] = useState(true)
     // const [job, setJob] = useState(null)
-    const [loadingJob, setLoadingJob] = useState(false)
+    // const [loadingJob, setLoadingJob] = useState(false)
     
     // useEffect(() => {
     //     {job && !job.is_owner && (
