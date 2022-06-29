@@ -28,6 +28,8 @@ export function Login() {
     return (
         <div>
             {loading && "Loading..."}
+            Signup for new users is disabled.
+            For testing purposes login using user1@test.com and Lösenord123
             <Formik
                 initialValues={{
                     email: '',

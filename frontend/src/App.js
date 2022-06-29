@@ -12,7 +12,7 @@ import { Login } from './components/Login'
 import { NavBar } from "./components/NavBar";
 import { JobUpdate } from "./components/JobUpdate";
 import { JobDelete } from "./components/JobDelete";
-import { Signup } from "./components/Signup";
+// import { Signup } from "./components/Signup";
 import { ConfirmEmail } from "./components/ConfirmEmail";
 import { Payment } from "./components/Payment";
 import { Success } from "./components/Success";
@@ -43,9 +43,9 @@ export default function App() {
             <Route path="/jobs/:id/delete" element={<PrivateRoute><JobDelete/></PrivateRoute>} exact />
             <Route path="/create-job" element={<PrivateRoute><JobCreate/></PrivateRoute>} exact />
             <Route path="/login" element={<Login/>} exact />
-            <Route path="/signup" element={<Signup/>} exact />
+            <Route path="/signup" element={<Login/>} exact />
             <Route path="/accounts/confirm-email/:key" element={<ConfirmEmail/>} exact />
-            <Route path="/" element={<JobList/>} exact />
+            <Route path="/" element={<PrivateRoute><JobList/></PrivateRoute>} exact />
           </Routes>
           </div>
         </div>
