@@ -193,3 +193,4 @@ CORS_ALLOWED_ORIGINS = [
     "https://oskar-rosenqvist.com",
     "https://main--stalwart-babka-bc398f.netlify.app"
 ]
+AWS_DEFAULT_ACL = None
