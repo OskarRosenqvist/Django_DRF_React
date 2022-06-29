@@ -80,7 +80,7 @@ class CreatePaymentView(APIView):
         try:
             # Create a PaymentIntent with the order amount and currency
             intent = stripe.PaymentIntent.create(
-                amount=10000,  # 100 usd
+                amount=1000,  # 10 usd
                 currency='usd',
                 automatic_payment_methods={
                     'enabled': True,
@@ -148,11 +148,11 @@ def stripe_webhook(request):
             date_until=datetime.date.today() + datetime.timedelta(days=7),
             stripe_payment_intent_id=intent["id"],
         )
-        send_mail(
-            subject="Your sponsored job post",
-            message=f"Thanks for your purchase. Your job: {job.title} is now sponsored.",
-            recipient_list=[job.user.email],
-            from_email="your@email.com"
-        )
+        # send_mail(
+        #     subject="Your sponsored job post",
+        #     message=f"Thanks for your purchase. Your job: {job.title} is now sponsored.",
+        #     recipient_list=[job.user.email],
+        #     from_email="your@email.com"
+        # )
 
     return HttpResponse(status=200)
