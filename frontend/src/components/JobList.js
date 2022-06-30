@@ -16,7 +16,7 @@ function JobListItem({job}) {
         )}
         </h3>
       </NavLink>
-      <div className="mt-1 italic text-sm text-gray-500">{new Date(job.date_created).toUTCString()}</div>
+      
       {job.company_logo && (
         <div className="mt-1 italic text-sm text-gray-500">
           <img src={job.company_logo} className="w-20 px-2 py-2" alt=""/>
@@ -35,6 +35,7 @@ function JobListItem({job}) {
       {job.remote && (
         <p className="mt-1 bold text-red-500">Såld!</p>
       )}
+      <div className="mt-1 italic text-sm text-gray-500">{new Date(job.date_created).toUTCString()}</div>
       
       
     </div>
