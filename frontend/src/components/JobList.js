@@ -12,14 +12,14 @@ function JobListItem({job}) {
       <h3 className="text-2xl text-gray-800 font-semibold">
         {job.title}
         {job.sponsored && (
-          <span className="ml-2 px-2 py-2 text-sm bg-yellow-500 text-red-800 shadow-md rounded-xl">Hot!</span>
+          <span className="ml-2 px-2 py-2 text-sm bg-yellow-200 text-red-500 shadow-md rounded-xl">Hot!</span>
         )}
         </h3>
       </NavLink>
       
       {job.company_logo && (
         <div className="mt-1 italic text-sm text-gray-500">
-          <img src={job.company_logo} className="object-cover h-48 w-64 px-2 py-2" alt=""/>
+          <img src={job.company_logo} className="object-cover h-48 w-96 shadow-md rounded-xl px-2 py-2" alt=""/>
         </div>
       )}
       
