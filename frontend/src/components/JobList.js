@@ -19,7 +19,7 @@ function JobListItem({job}) {
       <div className="mt-1 italic text-sm text-gray-500">{new Date(job.date_created).toUTCString()}</div>
       {job.company_logo && (
         <div className="mt-1 italic text-sm text-gray-500">
-          <img src={job.company_logo} className="h-20 w-20 px-2 py-2" alt=""/>
+          <img src={job.company_logo} className="w-20 px-2 py-2" alt=""/>
         </div>
       )}
       
