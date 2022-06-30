@@ -97,6 +97,7 @@ export function Payment() {
 
     return (
         <div>
+            <div>For testing purpose use Stripes test-card 4242424242424242 12/22 CVC 156.</div>
             {/* {loadingJob && "Fetching payment details..."} */}
             {!canSponsor && (
                 <div>
