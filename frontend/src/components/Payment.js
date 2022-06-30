@@ -101,7 +101,7 @@ export function Payment() {
             {!canSponsor && (
                 <div>
                     <p className="text-gray-600 italic">
-                        We already have 3 sponsored job posts at the moment. Please check back in a few days.
+                        We already have 3 Hot adds at the moment. Please check back in a few days.
                     </p>
                 </div>
             )}

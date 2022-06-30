@@ -86,7 +86,7 @@ export function JobUpdate() {
                             <Field name="title">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
-                                        <span className="text-gray-700">Title</span>
+                                        <span className="text-gray-700">Vad säljer du?</span>
                                         <input
                                         {...field}
                                         type="text"
@@ -113,7 +113,7 @@ export function JobUpdate() {
                             <Field name="company_name">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
-                                        <span className="text-gray-700">Company Name</span>
+                                        <span className="text-gray-700">Säljarens Namn och Telefonnummer:</span>
                                         <input
                                         {...field}
                                         type="text"
@@ -140,7 +140,7 @@ export function JobUpdate() {
                             <Field name="company_website">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
-                                        <span className="text-gray-700">Company Website URL</span>
+                                        <span className="text-gray-700">Länk till mer info:</span>
                                         <input
                                         {...field}
                                         type="text"
@@ -167,7 +167,7 @@ export function JobUpdate() {
                             <Field name="location">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
-                                        <span className="text-gray-700">Location</span>
+                                        <span className="text-gray-700">Plats</span>
                                         <input
                                         {...field}
                                         type="text"
@@ -194,7 +194,7 @@ export function JobUpdate() {
                             <Field name="salary">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
-                                        <span className="text-gray-700">Salary</span>
+                                        <span className="text-gray-700">Pris usd:</span>
                                         <input
                                         {...field}
                                         type="number"
@@ -239,7 +239,7 @@ export function JobUpdate() {
                                             ) : null
                                         }
                                         />
-                                        <span className="text-gray-700">Available</span>
+                                        <span className="text-gray-700">Dölj Annons</span>
                                     </label>
                                     </div>
                                 )}
@@ -265,7 +265,7 @@ export function JobUpdate() {
                                             ) : null
                                         }
                                         />
-                                        <span className="text-gray-700">Remote</span>
+                                        <span className="text-gray-700">Såld</span>
                                     </label>
                                 )}
                             </Field>

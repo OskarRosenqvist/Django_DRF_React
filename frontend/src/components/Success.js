@@ -3,7 +3,7 @@ export function Success() {
 
     return (
         <div>
-            Succesful sponsored post!
+            Grattis! Nu är din annons överst i listan!
         </div>
     )
 }

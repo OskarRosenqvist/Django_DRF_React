@@ -68,12 +68,12 @@ export function JobCreate() {
             {loading && "Loading..."}
             <Formik
                 initialValues={{
-                    title: 'Software developer',
-                    company_name: 'Facebook',
+                    title: 'Varans namn',
+                    company_name: 'Säljares namn och telefonnr',
                     company_logo: '',
-                    company_website: 'https://facebook.com',
-                    location:'California',
-                    salary: 100000
+                    company_website: 'https://google.com',
+                    location:'Stockholm',
+                    salary: 100
                 }}
                 onSubmit={handleSubmit}>
 
@@ -82,7 +82,7 @@ export function JobCreate() {
                         <Field name="title">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Title</span>
+                                    <span className="text-gray-700">Vad säljer du?</span>
                                     <input
                                     {...field}
                                     type="text"
@@ -109,7 +109,7 @@ export function JobCreate() {
                         <Field name="company_name">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Company Name</span>
+                                    <span className="text-gray-700">Säljarens Namn och Telefonnummer:</span>
                                     <input
                                     {...field}
                                     type="text"
@@ -136,7 +136,7 @@ export function JobCreate() {
                         
                         <div className="flex items-center">
                             <label className="mt-3 block">
-                                <span className="text-gray-700">Company Logo</span>
+                                <span className="text-gray-700">Bild på varan:</span>
                                 <input
                                 onChange={e => setFile(e.target.files[0])}
                                 type="file"
@@ -159,7 +159,7 @@ export function JobCreate() {
                         <Field name="company_website">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Company Website URL</span>
+                                    <span className="text-gray-700">Länk till mer information om varan:</span>
                                     <input
                                     {...field}
                                     type="text"
@@ -186,7 +186,7 @@ export function JobCreate() {
                         <Field name="location">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Location</span>
+                                    <span className="text-gray-700">Plats</span>
                                     <input
                                     {...field}
                                     type="text"
@@ -213,7 +213,7 @@ export function JobCreate() {
                         <Field name="salary">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Salary</span>
+                                    <span className="text-gray-700">Pris (usd):</span>
                                     <input
                                     {...field}
                                     type="number"
@@ -236,7 +236,7 @@ export function JobCreate() {
                             )}
                         </Field>
 
-                        <button type="submit" className="mt-3 bg-blue-100 rounded-md shadow-sm text-lg px-5 py-3 hover:bg-blue-200 ">Submit</button>
+                        <button type="submit" className="mt-3 bg-blue-100 rounded-md shadow-sm text-lg px-5 py-3 hover:bg-blue-200 ">Skapa Annons</button>
                     </Form>
                 )}
 

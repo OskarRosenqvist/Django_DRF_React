@@ -55,6 +55,9 @@ export default function App() {
 }
 
 function About() {
-  return <h2>About</h2>;
+  return <h2>Den här sidan existerar mest i syfte att användas som digitalt CV för Oskar Rosenqvist 
+    och är ej seriöst menad att användas som en Blocket-kopia. Stripe betalningarna som görs för 
+    att sponsra annonserna utförs endast i en testmiljö med Stripes test-kort och leder 
+    således inte till några intäkter. <br></br><br></br>Backend är byggd i Django med Rest Framework api till en React Frontend. Servern körs på Digital Ocean med Docker-liknande containers för django, postgres databas och redis. Statiska filer ligger på AWS S3. Frontend körs på Netlify. CI/CD sker automatiskt vid push till GitHub. Jag gör inga anspråk på att vara någon Ernst Billgren så frontenden är mestadels funktionell.</h2>;
 }
 

@@ -12,7 +12,7 @@ function JobListItem({job}) {
       <h3 className="text-2xl text-gray-800 font-semibold">
         {job.title}
         {job.sponsored && (
-          <span className="ml-2 px-2 py-2 text-sm bg-yellow-200 text-red-800 shadow-xl rounded-xl">Sponsored</span>
+          <span className="ml-2 px-2 py-2 text-sm bg-yellow-200 text-red-800 shadow-xl rounded-xl">Hot!</span>
         )}
         </h3>
       </NavLink>
@@ -25,15 +25,15 @@ function JobListItem({job}) {
       
       </div>
       
-      <p className="mt-1 text-xl text-gray-500">${job.salary}</p>
-      <p className="mt-1 text-gray-500">{job.company_name}</p>
+      <p className="mt-1 text-xl text-gray-500">Pris: ${job.salary}</p>
+      <p className="mt-1 text-gray-500">Säljare: {job.company_name}</p>
       <p className="mt-1 italic text-sm text-gray-500">
-         Company Website: 
+         Mer info: 
         <a className="ml-3 text-blue-500 hover:text-blue-600" href={job.company_website}>{job.company_website}</a>
       </p>
       <p className="mt-1 text-gray-500">{job.location}</p>
       {job.remote && (
-        <p className="mt-1 text-gray-500">Remote work accepted.</p>
+        <p className="mt-1 text-gray-500">Såld!.</p>
       )}
       
       

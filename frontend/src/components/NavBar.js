@@ -19,32 +19,33 @@ export function NavBar() {
 
     return (
         
-        <nav className="max-w-4xl mx-auto py-5 px-4 border-b border-gray-200">
-                        <ul className="flex items-center justify-between">
+        <nav className="max-w-4xl mx-auto py-5 border-b border-gray-200">
+                        <img src="https://djangodata.s3.amazonaws.com/static/plocket.png" alt=""/>
+                        <ul className="flex items-center justify-between py-3 px-2 bg-blue-200 shadow-md rounded-md">
                             <div className="flex items-center">
                                 <li className="text-gray-600">
-                                <Link className="hover:text-blue-600" to="/">Home</Link>
+                                <Link className="hover:text-blue-600" to="/">Alla Annonser</Link>
                                 </li>
-                                <li className="ml-3 text-gray-600">
-                                <Link className="hover:text-blue-600" to="/about">About</Link>
+                                <li className="ml-4 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/about">Om den här sidan</Link>
                                 </li>
-                                <li className="ml-3 text-gray-600">
-                                <Link className="hover:text-blue-600" to="/create-job">Create Job</Link>
+                                <li className="ml-4 text-gray-600">
+                                <Link className="hover:text-blue-600" to="/create-job">Lägg in Annons</Link>
                                 </li>
                             </div>
                             <div className="flex items-center">
                                 {user ? (
                                     <li className="px-3 text-gray-600">
-                                    <button className="hover:text-blue-600" onClick={(handleSubmit)}>Logout</button>
+                                    <button className="hover:text-blue-600" onClick={(handleSubmit)}>Logga ut</button>
                                     </li>
                                     ): 
                                     (
                                     <div className="flex items-center">
                                         <li className="px-3 text-gray-600">
-                                            <Link className="hover:text-blue-600" to="/signup">Signup</Link>
+                                            <Link className="hover:text-blue-600" to="/signup">Registrera Konto</Link>
                                         </li>
                                         <li className="px-3 text-gray-600">
-                                            <Link className="hover:text-blue-600" to="/login">Login</Link>
+                                            <Link className="hover:text-blue-600" to="/login">Logga In</Link>
                                         </li>
                                     </div>
                                 )}

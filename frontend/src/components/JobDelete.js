@@ -69,7 +69,7 @@ export function JobDelete() {
             {job && (
                 <form onSubmit={handleSubmit}>
                     <p>
-                        Do you really want to delete the job post?
+                        Vill du verkligen radera annonsen?
                     </p>
                     <button className="mt-2 ml-2 bg-blue-100 rounded-md shadow-sm px-3 py-2 hover:bg-red-500" type="submit">Delete</button>
                 </form>
