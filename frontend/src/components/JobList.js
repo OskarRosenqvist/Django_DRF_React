@@ -33,7 +33,7 @@ function JobListItem({job}) {
       </p>
       <p className="mt-1 text-gray-500">{job.location}</p>
       {job.remote && (
-        <p className="mt-1 text-red-500">Såld!</p>
+        <p className="mt-1 bold text-red-500">Såld!</p>
       )}
       
       
