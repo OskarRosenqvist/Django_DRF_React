@@ -165,9 +165,10 @@ export function JobCreate() {
                                     <span className="text-gray-700">Länk till mer information om varan:</span>
                                     <input
                                     {...field}
-                                    type="text"
+                                    type="url"
                                     required
                                     className="
+                                        peer
                                         mt-1
                                         block
                                         w-full
@@ -183,6 +184,9 @@ export function JobCreate() {
                                         ) : null
                                     }
                                     />
+                                    <p class="mt-2 invisible peer-invalid:visible text-red-600 text-sm">
+                                        Please provide a valid url.
+                                    </p>
                                 </label>
                             )}
                         </Field>
