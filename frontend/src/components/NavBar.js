@@ -24,13 +24,13 @@ export function NavBar() {
                         <ul className="flex items-center justify-between py-3 px-2 bg-blue-200 shadow-md rounded-md">
                             <div className="flex items-center">
                                 <li className="bold text-gray-600">
-                                <Link className="bg-blue-600 text-white px-3 py-2 rounded-full shadow-md text-sm font-medium hover:bg-orange-600 focus:bg-orange-600" to="/">Start</Link>
+                                <Link className="bg-blue-600 text-white px-3 py-2 rounded-full shadow-md text-sm font-medium hover:text-blue-300 focus:text-blue-300" to="/">Start</Link>
                                 </li>
                                 <li className="bold ml-6 text-gray-600">
-                                <Link className="bg-blue-200 text-blue-600 px-3 py-2 rounded-md shadow-md text-sm font-medium hover:bg-blue-300 focus:bg-orange-600 focus:text-white" to="/create-job">Annonsera</Link>
+                                <Link className="bg-blue-200 text-blue-600 px-3 py-2 rounded-md shadow-md text-sm font-medium hover:text-white focus:text-white" to="/create-job">Annonsera</Link>
                                 </li>
                                 <li className="bold ml-6 text-gray-600">
-                                <Link className="bg-blue-200 text-blue-600 px-3 py-2 rounded-md shadow-md text-sm font-medium hover:bg-blue-300 focus:bg-orange-600 focus:text-white" to="/about">Info</Link>
+                                <Link className="bg-blue-200 text-blue-600 px-3 py-2 rounded-md shadow-md text-sm font-medium hover:text-white focus:text-white" to="/about">Info</Link>
                                 </li>
                             </div>
                             <div className="flex items-center">

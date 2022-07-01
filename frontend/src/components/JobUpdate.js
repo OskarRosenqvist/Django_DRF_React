@@ -76,8 +76,8 @@ export function JobUpdate() {
                         company_website: job.company_website,
                         location: job.location,
                         salary: job.salary,
-                        available: true,
-                        remote: false,
+                        // available: job.available,
+                        remote: job.remote,
                     }}
                     onSubmit={handleSubmit}>
 
@@ -90,6 +90,7 @@ export function JobUpdate() {
                                         <input
                                         {...field}
                                         type="text"
+                                        required
                                         className="
                                             mt-1
                                             block
@@ -117,6 +118,7 @@ export function JobUpdate() {
                                         <input
                                         {...field}
                                         type="text"
+                                        required
                                         className="
                                             mt-1
                                             block
@@ -143,8 +145,10 @@ export function JobUpdate() {
                                         <span className="text-gray-700">Länk till mer info:</span>
                                         <input
                                         {...field}
-                                        type="text"
+                                        type="url"
+                                        required
                                         className="
+                                            peer
                                             mt-1
                                             block
                                             w-full
@@ -160,6 +164,9 @@ export function JobUpdate() {
                                             ) : null
                                         }
                                         />
+                                        <p class="mt-2 invisible peer-invalid:visible text-red-600 text-sm">
+                                        Please provide a valid url.
+                                        </p>
                                     </label>
                                 )}
                             </Field>
@@ -171,6 +178,7 @@ export function JobUpdate() {
                                         <input
                                         {...field}
                                         type="text"
+                                        required
                                         className="
                                             mt-1
                                             block
@@ -198,6 +206,7 @@ export function JobUpdate() {
                                         <input
                                         {...field}
                                         type="number"
+                                        required
                                         className="
                                             mt-1
                                             block
@@ -217,7 +226,7 @@ export function JobUpdate() {
                                 )}
                             </Field>
 
-                            <Field name="available">
+                            {/* <Field name="available">
                                 {({ field, form }) => (
                                     <div className="block">
                                     <label className="mt-3 block">
@@ -243,7 +252,7 @@ export function JobUpdate() {
                                     </label>
                                     </div>
                                 )}
-                            </Field>
+                            </Field> */}
                             <Field name="remote">
                                 {({ field, form }) => (
                                     <label className="mt-3 block">
