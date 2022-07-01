@@ -86,6 +86,7 @@ export function JobCreate() {
                                     <input
                                     {...field}
                                     type="text"
+                                    required
                                     className="
                                         mt-1
                                         block
@@ -113,6 +114,7 @@ export function JobCreate() {
                                     <input
                                     {...field}
                                     type="text"
+                                    required
                                     className="
                                         mt-1
                                         block
@@ -140,6 +142,7 @@ export function JobCreate() {
                                 <input
                                 onChange={e => setFile(e.target.files[0])}
                                 type="file"
+                                required
                                 className="
                                     mt-1
                                     block
@@ -163,6 +166,7 @@ export function JobCreate() {
                                     <input
                                     {...field}
                                     type="text"
+                                    required
                                     className="
                                         mt-1
                                         block
@@ -190,6 +194,7 @@ export function JobCreate() {
                                     <input
                                     {...field}
                                     type="text"
+                                    required
                                     className="
                                         mt-1
                                         block
@@ -217,6 +222,7 @@ export function JobCreate() {
                                     <input
                                     {...field}
                                     type="number"
+                                    required
                                     className="
                                         mt-1
                                         block

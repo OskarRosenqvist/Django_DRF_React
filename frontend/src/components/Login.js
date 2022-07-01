@@ -42,11 +42,12 @@ export function Login() {
                         <Field name="email">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Email</span>
+                                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 text-gray-700">Email</span>
                                     <input
                                     {...field}
-                                    type="text"
+                                    type="email"
                                     className="
+                                        peer
                                         mt-1
                                         block
                                         w-full
@@ -62,6 +63,9 @@ export function Login() {
                                         ) : null
                                     }
                                     />
+                                    <p class="mt-2 invisible peer-invalid:visible text-red-600 text-sm">
+                                        Please provide a valid email address.
+                                    </p>
                                 </label>
                             )}
                         </Field>
@@ -69,7 +73,7 @@ export function Login() {
                         <Field name="password">
                             {({ field, form }) => (
                                 <label className="mt-3 block">
-                                    <span className="text-gray-700">Password</span>
+                                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 text-gray-700">Password</span>
                                     <input
                                     {...field}
                                     type="password"
