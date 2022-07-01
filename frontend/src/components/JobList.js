@@ -19,7 +19,7 @@ function JobListItem({job}) {
       
       {job.company_logo && (
         <div className="mt-1 italic text-sm text-gray-500">
-          <img src={job.company_logo} className="object-cover h-96 w-86 shadow-md rounded-xl px-2 py-2" alt=""/>
+          <img src={job.company_logo} className="object-cover h-96 w-96 shadow-md rounded-xl px-2 py-2" alt=""/>
         </div>
       )}
       

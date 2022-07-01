@@ -44,7 +44,7 @@ export function JobDetail() {
                     </div>
                     {job.company_logo && (
                     <div className="mt-1 italic text-sm text-gray-500">
-                    <img src={job.company_logo} className="object-cover h-240 w-320 shadow-md rounded-xl px-2 py-2" alt=""/>
+                    <img src={job.company_logo} className="object-cover shadow-md rounded-xl px-2 py-2" alt=""/>
                     </div>
                     )}
                     
